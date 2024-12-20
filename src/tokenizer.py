@@ -6,8 +6,7 @@ import sys
 spm.SentencePieceTrainer.train(
     input='./data/staged/scc-eng.txt',  # Path to your dataset
     model_prefix='tokenizer',  # Output files: tokenizer.model and tokenizer.vocab
-    vocab_size=1000,  # Vocabulary size
-    model_type='bpe'  # Tokenization algorithm (bpe, unigram, char, or word)
+    model_type='char'  # Tokenization algorithm (bpe, unigram, char, or word)
 )
 
 
