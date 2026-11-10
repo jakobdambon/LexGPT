@@ -1,0 +1,46 @@
+{
+  "experiment": "character-bigram",
+  "seed": 1337,
+  "device": "mps",
+  "system": {
+    "platform": "macOS-14.6.1-arm64-arm-64bit",
+    "machine": "arm64",
+    "processor": "Apple M3 Pro",
+    "ram_bytes": 19327352832,
+    "available_accelerators": [
+      "cpu",
+      "mps"
+    ],
+    "pytorch_threads": 5,
+    "python": "3.11.1",
+    "pytorch": "2.5.1"
+  },
+  "configuration": {
+    "steps": 10000,
+    "batch_size": 256,
+    "learning_rate": 0.005,
+    "best_validation_step": 8000,
+    "vocab_size": 78,
+    "parameter_count": 6084,
+    "fit_characters": 343708,
+    "validation_characters": 38190,
+    "test_characters": 42394
+  },
+  "training": {
+    "elapsed_seconds": 5.33574533299543,
+    "tokens_per_second": 479783.01816043456
+  },
+  "validation": {
+    "target_tokens": 38189,
+    "loss_nats_per_token": 2.6513278068864725,
+    "perplexity_per_token": 14.172844958173279,
+    "bits_per_byte": 3.8249573201518605
+  },
+  "test": {
+    "target_tokens": 42393,
+    "loss_nats_per_token": 2.6722789582006463,
+    "perplexity_per_token": 14.47291480559012,
+    "bits_per_byte": 3.855192661499199
+  },
+  "example_generation": "Swiss Criminal Code\nnicove\nJus tvercincubonator by hore arded ciont ary mprtr o mesursoinof o quve pth tedexcrny 264brof t. mpalexpeinsecoreed t 2; 346467atotanme 26 the t\ng halte a unomberatheimo 1 cuscus, a-\nty.\nPr bthareer's, towsthovirtheder s s l sivinesos, imes\nouttist.\namay orsth o\naphissf dinlierdies me te os I"
+}
