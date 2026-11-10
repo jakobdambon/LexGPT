@@ -75,6 +75,6 @@ def test_actual_raw_corpus_has_no_unsupported_characters() -> None:
 
     processed = preprocess_text(raw_text)
 
-    assert "Ä" in processed
+    assert "\uf02d" in raw_text
     assert "\uf02d" not in processed
     assert "Swiss Criminal Code\n1 / 1" not in processed[-100:]

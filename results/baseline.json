@@ -20,27 +20,27 @@
     "batch_size": 256,
     "learning_rate": 0.005,
     "best_validation_step": 8000,
-    "vocab_size": 78,
-    "parameter_count": 6084,
-    "fit_characters": 343708,
-    "validation_characters": 38190,
-    "test_characters": 42394
+    "vocab_size": 70,
+    "parameter_count": 4900,
+    "fit_characters": 253132,
+    "validation_characters": 28126,
+    "test_characters": 31288
   },
   "training": {
-    "elapsed_seconds": 5.33574533299543,
-    "tokens_per_second": 479783.01816043456
+    "elapsed_seconds": 5.1492789999902016,
+    "tokens_per_second": 497156.98061900923
   },
   "validation": {
-    "target_tokens": 38189,
-    "loss_nats_per_token": 2.6513278068864725,
-    "perplexity_per_token": 14.172844958173279,
-    "bits_per_byte": 3.8249573201518605
+    "target_tokens": 28125,
+    "loss_nats_per_token": 2.4439113194444446,
+    "perplexity_per_token": 11.518003344366551,
+    "bits_per_byte": 3.525693382947954
   },
   "test": {
-    "target_tokens": 42393,
-    "loss_nats_per_token": 2.6722789582006463,
-    "perplexity_per_token": 14.47291480559012,
-    "bits_per_byte": 3.855192661499199
+    "target_tokens": 31287,
+    "loss_nats_per_token": 2.4723801394149327,
+    "perplexity_per_token": 11.850619437419866,
+    "bits_per_byte": 3.5667765644544414
   },
-  "example_generation": "Swiss Criminal Code\nnicove\nJus tvercincubonator by hore arded ciont ary mprtr o mesursoinof o quve pth tedexcrny 264brof t. mpalexpeinsecoreed t 2; 346467atotanme 26 the t\ng halte a unomberatheimo 1 cuscus, a-\nty.\nPr bthareer's, towsthovirtheder s s l sivinesos, imes\nouttist.\namay orsth o\naphissf dinlierdies me te os I"
+  "example_generation": "Swiss Criminal Code\nperex-\nJumo f tendedes-\n31. pre winy ther oncof cane asetOf orut ory tinizec.\n1 day ofandalerinsd Ja ve or s.\nd\nExugextexe iputhemoponchovofose juns, s\nit re g in ped\nithed\n124 1 e de or m-\ns apromepexcug\nar, sty s,\ndathamino otod o ier putupenorurowivin..\ncofe toffinorcrul an ftangreiang orexthed I"
 }
