@@ -1,0 +1,531 @@
+{
+  "experiment": "character-self-attention-hardware-comparison",
+  "comparison_controls": {
+    "same_architecture_across_hardware_per_model_variant": true,
+    "same_initialization_seed": 1337,
+    "same_precomputed_batches_across_hardware_per_context_size": true,
+    "batch_schedule_seed": 1339,
+    "validation_checkpoint_selection": true,
+    "test_set_used_for_selection": false
+  },
+  "configuration": {
+    "steps": 45000,
+    "batch_size": 256,
+    "learning_rate": 0.001,
+    "attention_learning_rate": 0.001,
+    "seed": 1337,
+    "cpu_parallel_threads": 5,
+    "context_sizes": [
+      4
+    ],
+    "steps_without_attention": 45000,
+    "steps_with_attention": 30000,
+    "validation_interval": 1500,
+    "self_attention_variants": [
+      false,
+      true
+    ]
+  },
+  "summary": [
+    {
+      "name": "cpu-single-thread-context-4-without-attention",
+      "context_size": 4,
+      "self_attention": false,
+      "learning_rate": 0.001,
+      "steps": 45000,
+      "validation_interval": 1500,
+      "approximate_epochs": 45.510571726557316,
+      "device": "cpu",
+      "pytorch_threads": 1,
+      "fit_seconds": 19.423422791005578,
+      "fit_tokens_per_second": 593098.3495522003,
+      "speedup_vs_cpu_single_thread": 1.0,
+      "validation_loss_nats_per_token": 1.3756735961558122,
+      "validation_bits_per_byte": 1.9846774750558769,
+      "test_loss_nats_per_token": 1.6698321288937636,
+      "test_bits_per_byte": 2.4090585314720934,
+      "test_perplexity_per_token": 5.311276112542679,
+      "parameter_count": 27782,
+      "architecture": "character-embedding-mlp",
+      "best_validation_step": 45000
+    },
+    {
+      "name": "cpu-5-threads-context-4-without-attention",
+      "context_size": 4,
+      "self_attention": false,
+      "learning_rate": 0.001,
+      "steps": 45000,
+      "validation_interval": 1500,
+      "approximate_epochs": 45.510571726557316,
+      "device": "cpu",
+      "pytorch_threads": 5,
+      "fit_seconds": 19.78531137498794,
+      "fit_tokens_per_second": 582250.123925938,
+      "speedup_vs_cpu_single_thread": 0.9817092297854937,
+      "validation_loss_nats_per_token": 1.3756735961558122,
+      "validation_bits_per_byte": 1.9846774750558769,
+      "test_loss_nats_per_token": 1.6698321288937636,
+      "test_bits_per_byte": 2.4090585314720934,
+      "test_perplexity_per_token": 5.311276112542679,
+      "parameter_count": 27782,
+      "architecture": "character-embedding-mlp",
+      "best_validation_step": 45000
+    },
+    {
+      "name": "mps-accelerated-context-4-without-attention",
+      "context_size": 4,
+      "self_attention": false,
+      "learning_rate": 0.001,
+      "steps": 45000,
+      "validation_interval": 1500,
+      "approximate_epochs": 45.510571726557316,
+      "device": "mps",
+      "pytorch_threads": 1,
+      "fit_seconds": 66.37834783300059,
+      "fit_tokens_per_second": 173550.56846221667,
+      "speedup_vs_cpu_single_thread": 0.2926168460816834,
+      "validation_loss_nats_per_token": 1.3885351937540005,
+      "validation_bits_per_byte": 2.0032328381286924,
+      "test_loss_nats_per_token": 1.6536605673027747,
+      "test_bits_per_byte": 2.385727899761343,
+      "test_perplexity_per_token": 5.226075256009803,
+      "parameter_count": 27782,
+      "architecture": "character-embedding-mlp",
+      "best_validation_step": 40500
+    },
+    {
+      "name": "cpu-single-thread-context-4-with-attention",
+      "context_size": 4,
+      "self_attention": true,
+      "learning_rate": 0.001,
+      "steps": 30000,
+      "validation_interval": 1500,
+      "approximate_epochs": 30.34038115103821,
+      "device": "cpu",
+      "pytorch_threads": 1,
+      "fit_seconds": 48.84610600001179,
+      "fit_tokens_per_second": 157228.50046630425,
+      "speedup_vs_cpu_single_thread": 1.0,
+      "validation_loss_nats_per_token": 1.3635624605513477,
+      "validation_bits_per_byte": 1.9672047997797824,
+      "test_loss_nats_per_token": 1.6574204453055077,
+      "test_bits_per_byte": 2.3911522571102335,
+      "test_perplexity_per_token": 5.245761647428843,
+      "parameter_count": 32198,
+      "architecture": "character-causal-self-attention",
+      "best_validation_step": 25500
+    },
+    {
+      "name": "cpu-5-threads-context-4-with-attention",
+      "context_size": 4,
+      "self_attention": true,
+      "learning_rate": 0.001,
+      "steps": 30000,
+      "validation_interval": 1500,
+      "approximate_epochs": 30.34038115103821,
+      "device": "cpu",
+      "pytorch_threads": 5,
+      "fit_seconds": 41.76128708399483,
+      "fit_tokens_per_second": 183902.37792607184,
+      "speedup_vs_cpu_single_thread": 1.1696503965925955,
+      "validation_loss_nats_per_token": 1.350105764753796,
+      "validation_bits_per_byte": 1.947790891485903,
+      "test_loss_nats_per_token": 1.6404767862565528,
+      "test_bits_per_byte": 2.366707724225793,
+      "test_perplexity_per_token": 5.1576280122512514,
+      "parameter_count": 32198,
+      "architecture": "character-causal-self-attention",
+      "best_validation_step": 25500
+    },
+    {
+      "name": "mps-accelerated-context-4-with-attention",
+      "context_size": 4,
+      "self_attention": true,
+      "learning_rate": 0.001,
+      "steps": 30000,
+      "validation_interval": 1500,
+      "approximate_epochs": 30.34038115103821,
+      "device": "mps",
+      "pytorch_threads": 1,
+      "fit_seconds": 120.24244124998222,
+      "fit_tokens_per_second": 63870.958707777696,
+      "speedup_vs_cpu_single_thread": 0.4062301587711569,
+      "validation_loss_nats_per_token": 1.3579234389168178,
+      "validation_bits_per_byte": 1.9590694112321805,
+      "test_loss_nats_per_token": 1.6467711567314762,
+      "test_bits_per_byte": 2.375788581295483,
+      "test_perplexity_per_token": 5.190194418724991,
+      "parameter_count": 32198,
+      "architecture": "character-causal-self-attention",
+      "best_validation_step": 25500
+    }
+  ],
+  "runs": [
+    {
+      "name": "cpu-single-thread-context-4-without-attention",
+      "context_size": 4,
+      "self_attention": false,
+      "report": {
+        "experiment": "character-context-mlp",
+        "seed": 1337,
+        "device": "cpu",
+        "system": {
+          "platform": "macOS-14.6.1-arm64-arm-64bit",
+          "machine": "arm64",
+          "processor": "Apple M3 Pro",
+          "ram_bytes": 19327352832,
+          "available_accelerators": [
+            "cpu",
+            "mps"
+          ],
+          "pytorch_threads": 1,
+          "python": "3.11.1",
+          "pytorch": "2.5.1"
+        },
+        "configuration": {
+          "steps": 45000,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "validation_interval": 1500,
+          "context_size": 4,
+          "architecture": "character-embedding-mlp",
+          "embedding_size": 32,
+          "hidden_size": 128,
+          "self_attention": false,
+          "attention_heads": 0,
+          "shared_batch_schedule": true,
+          "best_validation_step": 45000,
+          "vocab_size": 70,
+          "parameter_count": 27782,
+          "fit_characters": 253132,
+          "validation_characters": 28126,
+          "test_characters": 31288
+        },
+        "training": {
+          "sampled_examples": 11520000,
+          "approximate_epochs": 45.510571726557316,
+          "elapsed_seconds": 19.423422791005578,
+          "tokens_per_second": 593098.3495522003
+        },
+        "validation": {
+          "target_tokens": 28122,
+          "loss_nats_per_token": 1.3756735961558122,
+          "perplexity_per_token": 3.957741744870582,
+          "bits_per_byte": 1.9846774750558769
+        },
+        "test": {
+          "target_tokens": 31284,
+          "loss_nats_per_token": 1.6698321288937636,
+          "perplexity_per_token": 5.311276112542679,
+          "bits_per_byte": 2.4090585314720934
+        },
+        "example_generation": "Swiss Criminal Code\nleast dissence\nnot to circing the offences or has been produced agraph 1; santial sentence The prohibit, the minors the outsid womal or be-\ncen-\nments in or a\nc. reduce; or monection which\ncould its entacts assistanceristion\n1. Gails to lentention or,\nmarkets trainy him.  commissions is the\nprobatio"
+      }
+    },
+    {
+      "name": "cpu-5-threads-context-4-without-attention",
+      "context_size": 4,
+      "self_attention": false,
+      "report": {
+        "experiment": "character-context-mlp",
+        "seed": 1337,
+        "device": "cpu",
+        "system": {
+          "platform": "macOS-14.6.1-arm64-arm-64bit",
+          "machine": "arm64",
+          "processor": "Apple M3 Pro",
+          "ram_bytes": 19327352832,
+          "available_accelerators": [
+            "cpu",
+            "mps"
+          ],
+          "pytorch_threads": 5,
+          "python": "3.11.1",
+          "pytorch": "2.5.1"
+        },
+        "configuration": {
+          "steps": 45000,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "validation_interval": 1500,
+          "context_size": 4,
+          "architecture": "character-embedding-mlp",
+          "embedding_size": 32,
+          "hidden_size": 128,
+          "self_attention": false,
+          "attention_heads": 0,
+          "shared_batch_schedule": true,
+          "best_validation_step": 45000,
+          "vocab_size": 70,
+          "parameter_count": 27782,
+          "fit_characters": 253132,
+          "validation_characters": 28126,
+          "test_characters": 31288
+        },
+        "training": {
+          "sampled_examples": 11520000,
+          "approximate_epochs": 45.510571726557316,
+          "elapsed_seconds": 19.78531137498794,
+          "tokens_per_second": 582250.123925938
+        },
+        "validation": {
+          "target_tokens": 28122,
+          "loss_nats_per_token": 1.3756735961558122,
+          "perplexity_per_token": 3.957741744870582,
+          "bits_per_byte": 1.9846774750558769
+        },
+        "test": {
+          "target_tokens": 31284,
+          "loss_nats_per_token": 1.6698321288937636,
+          "perplexity_per_token": 5.311276112542679,
+          "bits_per_byte": 2.4090585314720934
+        },
+        "example_generation": "Swiss Criminal Code\nleast dissence\nnot to circing the offences or has been produced agraph 1; santial sentence The prohibit, the minors the outsid womal or be-\ncen-\nments in or a\nc. reduce; or monection which\ncould its entacts assistanceristion\n1. Gails to lentention or,\nmarkets trainy him.  commissions is the\nprobatio"
+      }
+    },
+    {
+      "name": "mps-accelerated-context-4-without-attention",
+      "context_size": 4,
+      "self_attention": false,
+      "report": {
+        "experiment": "character-context-mlp",
+        "seed": 1337,
+        "device": "mps",
+        "system": {
+          "platform": "macOS-14.6.1-arm64-arm-64bit",
+          "machine": "arm64",
+          "processor": "Apple M3 Pro",
+          "ram_bytes": 19327352832,
+          "available_accelerators": [
+            "cpu",
+            "mps"
+          ],
+          "pytorch_threads": 1,
+          "python": "3.11.1",
+          "pytorch": "2.5.1"
+        },
+        "configuration": {
+          "steps": 45000,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "validation_interval": 1500,
+          "context_size": 4,
+          "architecture": "character-embedding-mlp",
+          "embedding_size": 32,
+          "hidden_size": 128,
+          "self_attention": false,
+          "attention_heads": 0,
+          "shared_batch_schedule": true,
+          "best_validation_step": 40500,
+          "vocab_size": 70,
+          "parameter_count": 27782,
+          "fit_characters": 253132,
+          "validation_characters": 28126,
+          "test_characters": 31288
+        },
+        "training": {
+          "sampled_examples": 11520000,
+          "approximate_epochs": 45.510571726557316,
+          "elapsed_seconds": 66.37834783300059,
+          "tokens_per_second": 173550.56846221667
+        },
+        "validation": {
+          "target_tokens": 28122,
+          "loss_nats_per_token": 1.3885351937540005,
+          "perplexity_per_token": 4.00897338070374,
+          "bits_per_byte": 2.0032328381286924
+        },
+        "test": {
+          "target_tokens": 31284,
+          "loss_nats_per_token": 1.6536605673027747,
+          "perplexity_per_token": 5.226075256009803,
+          "bits_per_byte": 2.385727899761343
+        },
+        "example_generation": "Swiss Criminal Code\npknol-\ntempted inded sacest public state incordical order to a money theirs, or day of determinal Ja he offender' custodifies the offence offender with\nin him group or the of\na subjection\n1 The doespects subject the\ncommits\nor 30 daily partucleasure inform assally victs will\nhe knows, pay-\nterm of a"
+      }
+    },
+    {
+      "name": "cpu-single-thread-context-4-with-attention",
+      "context_size": 4,
+      "self_attention": true,
+      "report": {
+        "experiment": "character-causal-self-attention",
+        "seed": 1337,
+        "device": "cpu",
+        "system": {
+          "platform": "macOS-14.6.1-arm64-arm-64bit",
+          "machine": "arm64",
+          "processor": "Apple M3 Pro",
+          "ram_bytes": 19327352832,
+          "available_accelerators": [
+            "cpu",
+            "mps"
+          ],
+          "pytorch_threads": 1,
+          "python": "3.11.1",
+          "pytorch": "2.5.1"
+        },
+        "configuration": {
+          "steps": 30000,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "validation_interval": 1500,
+          "context_size": 4,
+          "architecture": "character-causal-self-attention",
+          "embedding_size": 32,
+          "hidden_size": 128,
+          "self_attention": true,
+          "attention_heads": 4,
+          "shared_batch_schedule": true,
+          "best_validation_step": 25500,
+          "vocab_size": 70,
+          "parameter_count": 32198,
+          "fit_characters": 253132,
+          "validation_characters": 28126,
+          "test_characters": 31288
+        },
+        "training": {
+          "sampled_examples": 7680000,
+          "approximate_epochs": 30.34038115103821,
+          "elapsed_seconds": 48.84610600001179,
+          "tokens_per_second": 157228.50046630425
+        },
+        "validation": {
+          "target_tokens": 28122,
+          "loss_nats_per_token": 1.3635624605513477,
+          "perplexity_per_token": 3.910098089656787,
+          "bits_per_byte": 1.9672047997797824
+        },
+        "test": {
+          "target_tokens": 31284,
+          "loss_nats_per_token": 1.6574204453055077,
+          "perplexity_per_token": 5.245761647428843,
+          "bits_per_byte": 2.3911522571102335
+        },
+        "example_generation": "Swiss Criminal Code\nmonth the endanger, impose recordance not mark twied in who out and 4is a facto custody to a thry hire offing gerulable to are woman one or this shall inst para.\n3 An or oo where in commonly doising entative of the faling on\nthe act to the of their anothere is raning the officio montance attence, th"
+      }
+    },
+    {
+      "name": "cpu-5-threads-context-4-with-attention",
+      "context_size": 4,
+      "self_attention": true,
+      "report": {
+        "experiment": "character-causal-self-attention",
+        "seed": 1337,
+        "device": "cpu",
+        "system": {
+          "platform": "macOS-14.6.1-arm64-arm-64bit",
+          "machine": "arm64",
+          "processor": "Apple M3 Pro",
+          "ram_bytes": 19327352832,
+          "available_accelerators": [
+            "cpu",
+            "mps"
+          ],
+          "pytorch_threads": 5,
+          "python": "3.11.1",
+          "pytorch": "2.5.1"
+        },
+        "configuration": {
+          "steps": 30000,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "validation_interval": 1500,
+          "context_size": 4,
+          "architecture": "character-causal-self-attention",
+          "embedding_size": 32,
+          "hidden_size": 128,
+          "self_attention": true,
+          "attention_heads": 4,
+          "shared_batch_schedule": true,
+          "best_validation_step": 25500,
+          "vocab_size": 70,
+          "parameter_count": 32198,
+          "fit_characters": 253132,
+          "validation_characters": 28126,
+          "test_characters": 31288
+        },
+        "training": {
+          "sampled_examples": 7680000,
+          "approximate_epochs": 30.34038115103821,
+          "elapsed_seconds": 41.76128708399483,
+          "tokens_per_second": 183902.37792607184
+        },
+        "validation": {
+          "target_tokens": 28122,
+          "loss_nats_per_token": 1.350105764753796,
+          "perplexity_per_token": 3.8578335319342094,
+          "bits_per_byte": 1.947790891485903
+        },
+        "test": {
+          "target_tokens": 31284,
+          "loss_nats_per_token": 1.6404767862565528,
+          "perplexity_per_token": 5.1576280122512514,
+          "bits_per_byte": 2.366707724225793
+        },
+        "example_generation": "Swiss Criminal Code\ncompettacked\nsinters moit a monetary penalty.\nArt. 676bir\ndeted agraph in the day stroying five year, offendeminal act or thred of thosibile ental disrict may\nb. reduces only and an aust way on the be to a pasts,\nrelation of\nthe act to the of their in-\nsion adminal Public onstitutionancy under busin"
+      }
+    },
+    {
+      "name": "mps-accelerated-context-4-with-attention",
+      "context_size": 4,
+      "self_attention": true,
+      "report": {
+        "experiment": "character-causal-self-attention",
+        "seed": 1337,
+        "device": "mps",
+        "system": {
+          "platform": "macOS-14.6.1-arm64-arm-64bit",
+          "machine": "arm64",
+          "processor": "Apple M3 Pro",
+          "ram_bytes": 19327352832,
+          "available_accelerators": [
+            "cpu",
+            "mps"
+          ],
+          "pytorch_threads": 1,
+          "python": "3.11.1",
+          "pytorch": "2.5.1"
+        },
+        "configuration": {
+          "steps": 30000,
+          "batch_size": 256,
+          "learning_rate": 0.001,
+          "validation_interval": 1500,
+          "context_size": 4,
+          "architecture": "character-causal-self-attention",
+          "embedding_size": 32,
+          "hidden_size": 128,
+          "self_attention": true,
+          "attention_heads": 4,
+          "shared_batch_schedule": true,
+          "best_validation_step": 25500,
+          "vocab_size": 70,
+          "parameter_count": 32198,
+          "fit_characters": 253132,
+          "validation_characters": 28126,
+          "test_characters": 31288
+        },
+        "training": {
+          "sampled_examples": 7680000,
+          "approximate_epochs": 30.34038115103821,
+          "elapsed_seconds": 120.24244124998222,
+          "tokens_per_second": 63870.958707777696
+        },
+        "validation": {
+          "target_tokens": 28122,
+          "loss_nats_per_token": 1.3579234389168178,
+          "perplexity_per_token": 3.888111012999646,
+          "bits_per_byte": 1.9590694112321805
+        },
+        "test": {
+          "target_tokens": 31284,
+          "loss_nats_per_token": 1.6467711567314762,
+          "perplexity_per_token": 5.190194418724991,
+          "bits_per_byte": 2.375788581295483
+        },
+        "example_generation": "Swiss Criminal Code\npreve-\nten if the\nexempt stater with ther of\ndiscree year way umit not excs, mardanger interland that ened to a\nmonetary freant shopositionals by appoinor him to committed to\nlesses expect-\nsion of\nproba-\ntions (Art. 30 and\nin thdead withdrapent\n1 Jun-pocial carry Title Twelved\ntanks in the requires"
+      }
+    }
+  ]
+}

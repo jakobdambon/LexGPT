@@ -1,0 +1,446 @@
+{
+  "experiment": "character-context-hardware-comparison",
+  "comparison_controls": {
+    "same_architecture_across_hardware_per_context_size": true,
+    "same_initialization_seed": 1337,
+    "same_precomputed_batches_across_hardware_per_context_size": true,
+    "batch_schedule_seed": 1339,
+    "validation_checkpoint_selection": true,
+    "test_set_used_for_selection": false
+  },
+  "configuration": {
+    "steps": 10000,
+    "batch_size": 256,
+    "learning_rate": 0.005,
+    "seed": 1337,
+    "cpu_parallel_threads": 5,
+    "context_sizes": [
+      1,
+      4
+    ]
+  },
+  "summary": [
+    {
+      "name": "cpu-single-thread-context-1",
+      "context_size": 1,
+      "device": "cpu",
+      "pytorch_threads": 1,
+      "fit_seconds": 1.5280243330053054,
+      "fit_tokens_per_second": 1675365.9903864316,
+      "speedup_vs_cpu_single_thread": 1.0,
+      "validation_bits_per_byte": 3.527789923221673,
+      "test_bits_per_byte": 3.5692305972234486,
+      "test_loss_nats_per_token": 2.4740021252337234,
+      "test_perplexity_per_token": 11.869856571052738,
+      "parameter_count": 4900,
+      "best_validation_step": 9000
+    },
+    {
+      "name": "cpu-5-threads-context-1",
+      "context_size": 1,
+      "device": "cpu",
+      "pytorch_threads": 5,
+      "fit_seconds": 1.2043299580109306,
+      "fit_tokens_per_second": 2125663.3059498845,
+      "speedup_vs_cpu_single_thread": 1.268775490339033,
+      "validation_bits_per_byte": 3.527789923221673,
+      "test_bits_per_byte": 3.5692305972234486,
+      "test_loss_nats_per_token": 2.4740021252337234,
+      "test_perplexity_per_token": 11.869856571052738,
+      "parameter_count": 4900,
+      "best_validation_step": 9000
+    },
+    {
+      "name": "mps-accelerated-context-1",
+      "context_size": 1,
+      "device": "mps",
+      "pytorch_threads": 1,
+      "fit_seconds": 6.1222283329989295,
+      "fit_tokens_per_second": 418148.4029600056,
+      "speedup_vs_cpu_single_thread": 0.24958630255085792,
+      "validation_bits_per_byte": 3.527790073502407,
+      "test_bits_per_byte": 3.5692305071616417,
+      "test_loss_nats_per_token": 2.4740020628076356,
+      "test_perplexity_per_token": 11.869855830064052,
+      "parameter_count": 4900,
+      "best_validation_step": 9000
+    },
+    {
+      "name": "cpu-single-thread-context-4",
+      "context_size": 4,
+      "device": "cpu",
+      "pytorch_threads": 1,
+      "fit_seconds": 4.283453624986578,
+      "fit_tokens_per_second": 597648.5854934455,
+      "speedup_vs_cpu_single_thread": 1.0,
+      "validation_bits_per_byte": 2.0548226285835374,
+      "test_bits_per_byte": 2.4292702038683336,
+      "test_loss_nats_per_token": 1.683841792629619,
+      "test_perplexity_per_token": 5.386208971375615,
+      "parameter_count": 27782,
+      "best_validation_step": 7000
+    },
+    {
+      "name": "cpu-5-threads-context-4",
+      "context_size": 4,
+      "device": "cpu",
+      "pytorch_threads": 5,
+      "fit_seconds": 4.333506916998886,
+      "fit_tokens_per_second": 590745.566819793,
+      "speedup_vs_cpu_single_thread": 0.9884497029839815,
+      "validation_bits_per_byte": 2.0548226285835374,
+      "test_bits_per_byte": 2.4292702038683336,
+      "test_loss_nats_per_token": 1.683841792629619,
+      "test_perplexity_per_token": 5.386208971375615,
+      "parameter_count": 27782,
+      "best_validation_step": 7000
+    },
+    {
+      "name": "mps-accelerated-context-4",
+      "context_size": 4,
+      "device": "mps",
+      "pytorch_threads": 1,
+      "fit_seconds": 15.107935750012984,
+      "fit_tokens_per_second": 169447.37139207122,
+      "speedup_vs_cpu_single_thread": 0.28352342079445875,
+      "validation_bits_per_byte": 2.0528219030962416,
+      "test_bits_per_byte": 2.456880983050076,
+      "test_loss_nats_per_token": 1.7029801263725066,
+      "test_perplexity_per_token": 5.490284778358144,
+      "parameter_count": 27782,
+      "best_validation_step": 10000
+    }
+  ],
+  "runs": [
+    {
+      "name": "cpu-single-thread-context-1",
+      "context_size": 1,
+      "report": {
+        "experiment": "character-bigram",
+        "seed": 1337,
+        "device": "cpu",
+        "system": {
+          "platform": "macOS-14.6.1-arm64-arm-64bit",
+          "machine": "arm64",
+          "processor": "Apple M3 Pro",
+          "ram_bytes": 19327352832,
+          "available_accelerators": [
+            "cpu",
+            "mps"
+          ],
+          "pytorch_threads": 1,
+          "python": "3.11.1",
+          "pytorch": "2.5.1"
+        },
+        "configuration": {
+          "steps": 10000,
+          "batch_size": 256,
+          "learning_rate": 0.005,
+          "context_size": 1,
+          "architecture": "bigram-lookup",
+          "embedding_size": 0,
+          "hidden_size": 0,
+          "shared_batch_schedule": true,
+          "best_validation_step": 9000,
+          "vocab_size": 70,
+          "parameter_count": 4900,
+          "fit_characters": 253132,
+          "validation_characters": 28126,
+          "test_characters": 31288
+        },
+        "training": {
+          "elapsed_seconds": 1.5280243330053054,
+          "tokens_per_second": 1675365.9903864316
+        },
+        "validation": {
+          "target_tokens": 28125,
+          "loss_nats_per_token": 2.445277638888889,
+          "perplexity_per_token": 11.533751372265591,
+          "bits_per_byte": 3.527789923221673
+        },
+        "test": {
+          "target_tokens": 31287,
+          "loss_nats_per_token": 2.4740021252337234,
+          "perplexity_per_token": 11.869856571052738,
+          "bits_per_byte": 3.5692305972234486
+        },
+        "example_generation": "Swiss Criminal Code\nre pr theneny inty, imiltharmes d, dganasomir Arenaphealis ff oders gisia s cof cust. prin Thempy of et, tin miny batis ovest. womo und.\nAce en-agedencib. m arc.\nrode mitoo kllyer t custommpod asit be tacth asthe\npphalistiok\nt. tate t mpl, ot ticimer,\npre Thedir aindere. acore of cassimathece res ti"
+      }
+    },
+    {
+      "name": "cpu-5-threads-context-1",
+      "context_size": 1,
+      "report": {
+        "experiment": "character-bigram",
+        "seed": 1337,
+        "device": "cpu",
+        "system": {
+          "platform": "macOS-14.6.1-arm64-arm-64bit",
+          "machine": "arm64",
+          "processor": "Apple M3 Pro",
+          "ram_bytes": 19327352832,
+          "available_accelerators": [
+            "cpu",
+            "mps"
+          ],
+          "pytorch_threads": 5,
+          "python": "3.11.1",
+          "pytorch": "2.5.1"
+        },
+        "configuration": {
+          "steps": 10000,
+          "batch_size": 256,
+          "learning_rate": 0.005,
+          "context_size": 1,
+          "architecture": "bigram-lookup",
+          "embedding_size": 0,
+          "hidden_size": 0,
+          "shared_batch_schedule": true,
+          "best_validation_step": 9000,
+          "vocab_size": 70,
+          "parameter_count": 4900,
+          "fit_characters": 253132,
+          "validation_characters": 28126,
+          "test_characters": 31288
+        },
+        "training": {
+          "elapsed_seconds": 1.2043299580109306,
+          "tokens_per_second": 2125663.3059498845
+        },
+        "validation": {
+          "target_tokens": 28125,
+          "loss_nats_per_token": 2.445277638888889,
+          "perplexity_per_token": 11.533751372265591,
+          "bits_per_byte": 3.527789923221673
+        },
+        "test": {
+          "target_tokens": 31287,
+          "loss_nats_per_token": 2.4740021252337234,
+          "perplexity_per_token": 11.869856571052738,
+          "bits_per_byte": 3.5692305972234486
+        },
+        "example_generation": "Swiss Criminal Code\nre pr theneny inty, imiltharmes d, dganasomir Arenaphealis ff oders gisia s cof cust. prin Thempy of et, tin miny batis ovest. womo und.\nAce en-agedencib. m arc.\nrode mitoo kllyer t custommpod asit be tacth asthe\npphalistiok\nt. tate t mpl, ot ticimer,\npre Thedir aindere. acore of cassimathece res ti"
+      }
+    },
+    {
+      "name": "mps-accelerated-context-1",
+      "context_size": 1,
+      "report": {
+        "experiment": "character-bigram",
+        "seed": 1337,
+        "device": "mps",
+        "system": {
+          "platform": "macOS-14.6.1-arm64-arm-64bit",
+          "machine": "arm64",
+          "processor": "Apple M3 Pro",
+          "ram_bytes": 19327352832,
+          "available_accelerators": [
+            "cpu",
+            "mps"
+          ],
+          "pytorch_threads": 1,
+          "python": "3.11.1",
+          "pytorch": "2.5.1"
+        },
+        "configuration": {
+          "steps": 10000,
+          "batch_size": 256,
+          "learning_rate": 0.005,
+          "context_size": 1,
+          "architecture": "bigram-lookup",
+          "embedding_size": 0,
+          "hidden_size": 0,
+          "shared_batch_schedule": true,
+          "best_validation_step": 9000,
+          "vocab_size": 70,
+          "parameter_count": 4900,
+          "fit_characters": 253132,
+          "validation_characters": 28126,
+          "test_characters": 31288
+        },
+        "training": {
+          "elapsed_seconds": 6.1222283329989295,
+          "tokens_per_second": 418148.4029600056
+        },
+        "validation": {
+          "target_tokens": 28125,
+          "loss_nats_per_token": 2.4452777430555557,
+          "perplexity_per_token": 11.53375257369809,
+          "bits_per_byte": 3.527790073502407
+        },
+        "test": {
+          "target_tokens": 31287,
+          "loss_nats_per_token": 2.4740020628076356,
+          "perplexity_per_token": 11.869855830064052,
+          "bits_per_byte": 3.5692305071616417
+        },
+        "example_generation": "Swiss Criminal Code\nperex-\nJumo f tended.\nacerd pre winy ther on\nof cane asetOf orut ory tinizec.\n1 d, t abinte linsd Ja ve or s.\nd\nExugextexe iputhemoponcoticesse juns, s\nit re g in ped othed\n124 1 e de or m-\ns apromepexcug\nar, sty s,\ndathamino onod o ier putupenorurowivin..\ncofe toffino\ncrul an ftangreiang orexthed I"
+      }
+    },
+    {
+      "name": "cpu-single-thread-context-4",
+      "context_size": 4,
+      "report": {
+        "experiment": "character-context-mlp",
+        "seed": 1337,
+        "device": "cpu",
+        "system": {
+          "platform": "macOS-14.6.1-arm64-arm-64bit",
+          "machine": "arm64",
+          "processor": "Apple M3 Pro",
+          "ram_bytes": 19327352832,
+          "available_accelerators": [
+            "cpu",
+            "mps"
+          ],
+          "pytorch_threads": 1,
+          "python": "3.11.1",
+          "pytorch": "2.5.1"
+        },
+        "configuration": {
+          "steps": 10000,
+          "batch_size": 256,
+          "learning_rate": 0.005,
+          "context_size": 4,
+          "architecture": "character-embedding-mlp",
+          "embedding_size": 32,
+          "hidden_size": 128,
+          "shared_batch_schedule": true,
+          "best_validation_step": 7000,
+          "vocab_size": 70,
+          "parameter_count": 27782,
+          "fit_characters": 253132,
+          "validation_characters": 28126,
+          "test_characters": 31288
+        },
+        "training": {
+          "elapsed_seconds": 4.283453624986578,
+          "tokens_per_second": 597648.5854934455
+        },
+        "validation": {
+          "target_tokens": 28122,
+          "loss_nats_per_token": 1.4242945115534547,
+          "perplexity_per_token": 4.154925556554204,
+          "bits_per_byte": 2.0548226285835374
+        },
+        "test": {
+          "target_tokens": 31284,
+          "loss_nats_per_token": 1.683841792629619,
+          "perplexity_per_token": 5.386208971375615,
+          "bits_per_byte": 2.4292702038683336
+        },
+        "example_generation": "Swiss Criminal Code\nrequests of peison, implainites or to prostitution, the wilfully is giviois consumstances and Confed, the stamperion who or missime under of exparticle 65 para-\ntrodial sentence off custodial\nsentence that pasts;\nc. a custodities, whether, the deted to\nservise reain his a commit that is the\npermuse "
+      }
+    },
+    {
+      "name": "cpu-5-threads-context-4",
+      "context_size": 4,
+      "report": {
+        "experiment": "character-context-mlp",
+        "seed": 1337,
+        "device": "cpu",
+        "system": {
+          "platform": "macOS-14.6.1-arm64-arm-64bit",
+          "machine": "arm64",
+          "processor": "Apple M3 Pro",
+          "ram_bytes": 19327352832,
+          "available_accelerators": [
+            "cpu",
+            "mps"
+          ],
+          "pytorch_threads": 5,
+          "python": "3.11.1",
+          "pytorch": "2.5.1"
+        },
+        "configuration": {
+          "steps": 10000,
+          "batch_size": 256,
+          "learning_rate": 0.005,
+          "context_size": 4,
+          "architecture": "character-embedding-mlp",
+          "embedding_size": 32,
+          "hidden_size": 128,
+          "shared_batch_schedule": true,
+          "best_validation_step": 7000,
+          "vocab_size": 70,
+          "parameter_count": 27782,
+          "fit_characters": 253132,
+          "validation_characters": 28126,
+          "test_characters": 31288
+        },
+        "training": {
+          "elapsed_seconds": 4.333506916998886,
+          "tokens_per_second": 590745.566819793
+        },
+        "validation": {
+          "target_tokens": 28122,
+          "loss_nats_per_token": 1.4242945115534547,
+          "perplexity_per_token": 4.154925556554204,
+          "bits_per_byte": 2.0548226285835374
+        },
+        "test": {
+          "target_tokens": 31284,
+          "loss_nats_per_token": 1.683841792629619,
+          "perplexity_per_token": 5.386208971375615,
+          "bits_per_byte": 2.4292702038683336
+        },
+        "example_generation": "Swiss Criminal Code\nrequests of peison, implainites or to prostitution, the wilfully is giviois consumstances and Confed, the stamperion who or missime under of exparticle 65 para-\ntrodial sentence off custodial\nsentence that pasts;\nc. a custodities, whether, the deted to\nservise reain his a commit that is the\npermuse "
+      }
+    },
+    {
+      "name": "mps-accelerated-context-4",
+      "context_size": 4,
+      "report": {
+        "experiment": "character-context-mlp",
+        "seed": 1337,
+        "device": "mps",
+        "system": {
+          "platform": "macOS-14.6.1-arm64-arm-64bit",
+          "machine": "arm64",
+          "processor": "Apple M3 Pro",
+          "ram_bytes": 19327352832,
+          "available_accelerators": [
+            "cpu",
+            "mps"
+          ],
+          "pytorch_threads": 1,
+          "python": "3.11.1",
+          "pytorch": "2.5.1"
+        },
+        "configuration": {
+          "steps": 10000,
+          "batch_size": 256,
+          "learning_rate": 0.005,
+          "context_size": 4,
+          "architecture": "character-embedding-mlp",
+          "embedding_size": 32,
+          "hidden_size": 128,
+          "shared_batch_schedule": true,
+          "best_validation_step": 10000,
+          "vocab_size": 70,
+          "parameter_count": 27782,
+          "fit_characters": 253132,
+          "validation_characters": 28126,
+          "test_characters": 31288
+        },
+        "training": {
+          "elapsed_seconds": 15.107935750012984,
+          "tokens_per_second": 169447.37139207122
+        },
+        "validation": {
+          "target_tokens": 28122,
+          "loss_nats_per_token": 1.422907714322861,
+          "perplexity_per_token": 4.1491675108428,
+          "bits_per_byte": 2.0528219030962416
+        },
+        "test": {
+          "target_tokens": 31284,
+          "loss_nats_per_token": 1.7029801263725066,
+          "perplexity_per_token": 5.490284778358144,
+          "bits_per_byte": 2.456880983050076
+        },
+        "example_generation": "Swiss Criminal Code\nprese-\na jourt in\nArt. 231\n0tprominate prion\nof carryan that the or who inst hard person to a childr veiord\nof Articipatle imposed.\n6 The coms blence onition or a penalty of 24 Juest to a\nmeas-\ndomal comms or sty shall be liable doe committed obtary person conduct The samilysh3\ntakes in per-\nce in a"
+      }
+    }
+  ]
+}
