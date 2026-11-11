@@ -88,12 +88,13 @@ def evaluate_loss(
     model: nn.Module,
     token_ids: torch.Tensor,
     batch_size: int = 8192,
+    context_size: int = 1,
 ) -> float:
     """Calculate average next-token cross-entropy over an entire text split.
 
     Evaluation is chunked to bound temporary memory use. Each token is the
-    input for predicting the following token, so the final token has no target
-    inside this split and is not included in the loss.
+    target of one context window, and the first ``context_size`` characters
+    cannot be scored because this split contains no preceding context for them.
 
     Args:
         model: A model that returns next-token logits for input token IDs.
@@ -104,16 +105,19 @@ def evaluate_loss(
         Mean cross-entropy in nats per target token.
     """
     total_loss = 0.0
-    target_count = len(token_ids) - 1
+    if context_size < 1:
+        raise ValueError("context_size must be positive.")
+    target_count = len(token_ids) - context_size
     if target_count <= 0:
-        raise ValueError("Evaluation text must contain at least two tokens.")
+        raise ValueError("Evaluation text must be longer than context_size.")
 
     model.eval()
+    context_windows = token_ids.unfold(0, context_size, 1)
     for start in range(0, target_count, batch_size):
         end = min(start + batch_size, target_count)
-        # Inputs and targets are offset by one to form next-token examples.
-        logits = model(token_ids[start:end])
-        targets = token_ids[start + 1 : end + 1]
+        # Context windows and targets are aligned without exposing target text.
+        logits = model(context_windows[start:end])
+        targets = token_ids[context_size + start : context_size + end]
         # Sum chunk losses so the final average weights every target equally.
         total_loss += F.cross_entropy(logits, targets, reduction="sum").item()
     model.train()

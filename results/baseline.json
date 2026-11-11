@@ -16,10 +16,18 @@
     "pytorch": "2.5.1"
   },
   "configuration": {
-    "steps": 10000,
+    "steps": 30000,
     "batch_size": 256,
-    "learning_rate": 0.005,
-    "best_validation_step": 8000,
+    "learning_rate": 0.001,
+    "validation_interval": 1500,
+    "context_size": 1,
+    "architecture": "bigram-lookup",
+    "embedding_size": 0,
+    "hidden_size": 0,
+    "self_attention": false,
+    "attention_heads": 0,
+    "shared_batch_schedule": false,
+    "best_validation_step": 15000,
     "vocab_size": 70,
     "parameter_count": 4900,
     "fit_characters": 253132,
@@ -27,20 +35,22 @@
     "test_characters": 31288
   },
   "training": {
-    "elapsed_seconds": 5.1492789999902016,
-    "tokens_per_second": 497156.98061900923
+    "sampled_examples": 7680000,
+    "approximate_epochs": 30.340021569859086,
+    "elapsed_seconds": 17.058778667007573,
+    "tokens_per_second": 450208.0805382309
   },
   "validation": {
     "target_tokens": 28125,
-    "loss_nats_per_token": 2.4439113194444446,
-    "perplexity_per_token": 11.518003344366551,
-    "bits_per_byte": 3.525693382947954
+    "loss_nats_per_token": 2.443780416666667,
+    "perplexity_per_token": 11.5164957044136,
+    "bits_per_byte": 3.5256298881465646
   },
   "test": {
     "target_tokens": 31287,
-    "loss_nats_per_token": 2.4723801394149327,
-    "perplexity_per_token": 11.850619437419866,
-    "bits_per_byte": 3.5667765644544414
+    "loss_nats_per_token": 2.4636059967498483,
+    "perplexity_per_token": 11.747095243982557,
+    "bits_per_byte": 3.5542321542153177
   },
-  "example_generation": "Swiss Criminal Code\nperex-\nJumo f tendedes-\n31. pre winy ther oncof cane asetOf orut ory tinizec.\n1 day ofandalerinsd Ja ve or s.\nd\nExugextexe iputhemoponchovofose juns, s\nit re g in ped\nithed\n124 1 e de or m-\ns apromepexcug\nar, sty s,\ndathamino otod o ier putupenorurowivin..\ncofe toffinorcrul an ftangreiang orexthed I"
+  "example_generation": "Swiss Criminal Code\nperex-\nJha axctendedes-\n31. pre winy ther oncof cane asetOf orut ory tinizs iof d, t abinte linsd sa ve ord\nond\nExugextexe iputhemoponcoticesse juns, s\nit re g in ped othed\n124 1 e de or m-\ns apromepexcug\nAr, sty s,\ndathamino onod o ier putupenorurowivin..\ncofe toffinos rul an ftangreia. torexthed I"
 }

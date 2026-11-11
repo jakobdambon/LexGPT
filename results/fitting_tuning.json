@@ -1,0 +1,106 @@
+{
+  "experiment": "context-four-training-configuration-sweep",
+  "selection_split": "validation",
+  "test_metrics_used_for_selection": false,
+  "device": "cpu",
+  "pytorch_threads": 1,
+  "seed": 1337,
+  "batch_size": 256,
+  "validation_interval": 1500,
+  "batch_schedule_seed": 1339,
+  "context_size": 4,
+  "initial_sweep_steps": 30000,
+  "initial_learning_rates": [
+    0.001,
+    0.003,
+    0.005
+  ],
+  "initial_sweep": [
+    {
+      "self_attention": false,
+      "learning_rate": 0.001,
+      "steps": 30000,
+      "validation_loss_nats_per_token": 1.3838686195972014,
+      "validation_bits_per_byte": 1.9965003947347382,
+      "best_validation_step": 28500
+    },
+    {
+      "self_attention": false,
+      "learning_rate": 0.003,
+      "steps": 30000,
+      "validation_loss_nats_per_token": 1.387647928973535,
+      "validation_bits_per_byte": 2.0019527856299595,
+      "best_validation_step": 25500
+    },
+    {
+      "self_attention": false,
+      "learning_rate": 0.005,
+      "steps": 30000,
+      "validation_loss_nats_per_token": 1.400290787961827,
+      "validation_bits_per_byte": 2.020192575595027,
+      "best_validation_step": 25500
+    },
+    {
+      "self_attention": true,
+      "learning_rate": 0.001,
+      "steps": 30000,
+      "validation_loss_nats_per_token": 1.3635624605513477,
+      "validation_bits_per_byte": 1.9672047997797824,
+      "best_validation_step": 25500
+    },
+    {
+      "self_attention": true,
+      "learning_rate": 0.003,
+      "steps": 30000,
+      "validation_loss_nats_per_token": 1.376581887484665,
+      "validation_bits_per_byte": 1.9859878624516953,
+      "best_validation_step": 28500
+    },
+    {
+      "self_attention": true,
+      "learning_rate": 0.005,
+      "steps": 30000,
+      "validation_loss_nats_per_token": 1.3731682942013814,
+      "validation_bits_per_byte": 1.9810630883502904,
+      "best_validation_step": 28500
+    }
+  ],
+  "extended_fits": [
+    {
+      "self_attention": false,
+      "learning_rate": 0.001,
+      "steps": 45000,
+      "validation_loss_nats_per_token": 1.3756735961558122,
+      "validation_bits_per_byte": 1.9846774750558769,
+      "best_validation_step": 45000
+    },
+    {
+      "self_attention": false,
+      "learning_rate": 0.001,
+      "steps": 60000,
+      "validation_loss_nats_per_token": 1.3756735961558122,
+      "validation_bits_per_byte": 1.9846774750558769,
+      "best_validation_step": 45000
+    },
+    {
+      "self_attention": true,
+      "learning_rate": 0.0005,
+      "steps": 45000,
+      "validation_loss_nats_per_token": 1.3749852762072399,
+      "validation_bits_per_byte": 1.9836844392795268,
+      "best_validation_step": 45000
+    }
+  ],
+  "selected_validation_configuration": {
+    "without_attention": {
+      "steps": 45000,
+      "learning_rate": 0.001,
+      "best_validation_step": 45000
+    },
+    "with_attention": {
+      "steps": 30000,
+      "learning_rate": 0.001,
+      "best_validation_step": 25500
+    }
+  }
+}
